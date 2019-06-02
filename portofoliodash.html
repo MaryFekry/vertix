@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Vertex</title>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link rel="stylesheet" href="css/font-awesome.min.css">
+        
+        <link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
+
+        
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+        
+        <link rel="stylesheet" href="css/animate.css">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/slick.css">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="shortcut icon" href="img/vertex-new.png"/>
+         <style>
+            input[type="file"] {display: block;}
+            .imageThumb {max-height: 100px; border: 2px solid; padding: 1px; cursor: pointer;}
+            .pip {display: inline-block; margin: 10px 10px 0 0;}
+            
+            body{
+                height: 800px;
+            }
+        </style>
+        
+        
+    </head>
+    <body>
+        
+        
+        <div class="container" style="margin-top: 80px">
+            
+            <div class="form-group">
+                <label >Portofolio Images (four images):</label>
+                <input type="file" id="files" name="files[]" multiple />
+            </div>
+            
+            
+            <div class="form-group">
+              <label >Portofolio Name:</label>
+              <input type="text" class="form-control" id="name" name="name" placeholder="type the project name">
+            </div>
+            
+            <div class="form-group">
+              <label >related service :</label>
+              <input type="text" class="form-control" id="service" name="service" placeholder="type the project name">
+            </div>
+            
+            <div class="form-group">
+                <label>Description</label>
+                <textArea type="text" class="form-control" id="desc" name="desc" placeholder="type the portofolio desctiption" rows="10"></textArea>
+            </div>
+            <div class="form-group text-center">
+                <button type="submit" class="btn btn-default" style="padding-left: 20px;padding-right:20px">Save</button>
+            </div>
+            
+        </div> 
+        
+        
+        
+        
+        
+        
+        
+        
+        <script src="script/jquery-1.12.4.min.js"></script>
+        <script src="script/wow.min.js"></script>
+        <script src="script/bootstrap.min.js"></script>
+        <script src="script/slick.min.js"></script>
+        <script src="script/jquery.nicescroll.min.js"></script>
+         <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBenFW7knU8aOYP5pDHplxLCKJSd8Hvn1w&callback=initMap"></script>
+        <script src="script/script.js"></script>
+        
+        <script>
+        
+            $(document).ready(function() {
+                  if (window.File && window.FileList && window.FileReader) {
+                    $("#files").on("change", function(e) {
+                      var files = e.target.files,
+                        filesLength = files.length;
+                      for (var i = 0; i < filesLength; i++) {
+                        var f = files[i]
+                        var fileReader = new FileReader();
+                        fileReader.onload = (function(e) {
+                          var file = e.target;
+                          $("<span class=\"pip\">" +
+                            "<img class=\"imageThumb\" src=\"" + e.target.result + "\" title=\"" + file.name + "\"/>" +
+                            "<br/>").insertAfter("#files");
+                        });
+                        fileReader.readAsDataURL(f);
+                      }
+                    });
+                  } else {
+                    alert("Your browser doesn't support to File API")
+                  }
+                });
+        
+        
+        </script>
+        
+        
+    </body>
+</html>
